@@ -10,11 +10,7 @@ import enquiryRoutes from "./routes/enquiryRoutes.js";
 import seedRoutes from "./routes/seedRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-dotenv.config({ path: path.resolve(__dirname, '.env') });
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -29,10 +25,8 @@ const connectToDatabase = async () => {
     isDbConnected = true;
     return;
   }
-  if (process.env.MONGODB_URI) {
-    await connectDB();
-    isDbConnected = true;
-  }
+  await connectDB();
+  isDbConnected = true;
 };
 
 // Ensure DB connection before handling API routes
