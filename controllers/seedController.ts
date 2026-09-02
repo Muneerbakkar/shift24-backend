@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { Property } from '../models/Property.js';
-import { initialProperties } from '../../frontend/src/data/properties.js';
+import { initialProperties } from '../data/properties.js';
 
 export const seedDatabase = async (req: Request, res: Response) => {
   try {
